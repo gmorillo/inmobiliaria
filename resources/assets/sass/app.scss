@@ -1,0 +1,230 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+
+// Bootstrap
+// @import '~bootstrap/scss/bootstrap';
+
+// Variables
+@import "variables";
+// Bootstrap
+@import "node_modules/bootstrap/scss/bootstrap.scss";
+
+// Angular Material
+@import 'node_modules/angular-material/angular-material.scss';
+
+@import "forms";
+@import "modal";
+@import "ngprogressbar";
+@import "panel";
+@import "smartTables";
+@import "group_list";
+
+// multiselect
+@import "isteven_multiselect";
+//Accordeon menu
+@import "accordeon_menu";
+// Auto complete
+@import "autoComplete";
+// Date Picker
+@import "datePicker";
+// nav
+@import "nav";
+// owl.carousel
+@import "owl.carousel";
+// gallery
+@import "blueimp-gallery";
+// list-properties
+@import "list-properties";
+
+
+
+
+
+$brand-primary: #3490dc;
+
+.navbar-header {
+    float:none !important;
+    background-color: #fff;
+    border: 1px solid #c3c3c3;
+}
+
+.fa-btn {
+  margin-right: 10px;
+}
+
+.click-pointer {
+  cursor: pointer;
+  font-size: 18px;
+  i {
+    color: $brand-primary;
+  }
+}
+
+.popover {
+  z-index: 12000;
+}
+
+.vertical-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+}
+
+.st-selected {
+  color: white;
+  background-color: $brand-primary;
+}
+
+.navbar-brand {
+  img {
+    margin-top: -12px;
+  }
+
+}
+
+.nsc-btn-left-menu {
+    padding: 0px;
+    font-size: 1rem;
+    font-weight: 400;
+    background-color: transparent;
+    color: whitesmoke;
+}
+
+.nsc-lnk-left-menu {
+    padding: 0px;
+    font-size: 0.9rem;
+    font-weight: 400;
+    background-color: transparent;
+}
+
+.nsc-head-left-menu {
+    background: linear-gradient(to right, #6B9FB6, #8EB4D8);
+    border: 125px #6b9dbb;
+    color: whitesmoke;
+}
+
+.nsc-card-left-menu {
+    margin: .4rem 0;
+}
+
+.card-header {
+    padding: .65rem 1rem;
+}
+
+/*ESTILOS GENERALES*/
+    
+    body {
+        background-color: #fff;
+    }
+
+    .img-quantity{
+    position: absolute;
+    z-index: 1;
+    padding: 0.5rem;
+    color: white;
+    background-color: rgba(0,0,0,0.4);
+    right: 0;
+    top: 0;
+    }
+
+    .card:hover {
+        box-shadow:0 30px 70px rgba(0,0,0,.1);
+    }
+
+    .card {
+         box-shadow:0 20px 50px rgba(0,0,0,.05);
+    }
+
+    .property-details .info h3 {
+        font-size: 30px;
+        color: #272727;
+        margin-bottom: 8px;
+    }
+
+    .info h3 {
+        font-size: 22px;
+        color: #272727;
+        font-weight: 700;
+        line-height: 22px;
+        margin: 0;
+        font-family: 'Montserrat', sans-serif;
+    }
+    .navbar-laravel {
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+    }
+
+    .Venta-flag {
+        position: absolute;z-index: 1;bottom: 0.5rem; background-color: rgba(48, 161, 255, 0.85);; color: white; padding: 3px 10px 3px 0px;
+    }
+
+    .Alquiler-flag {
+        position: absolute;z-index: 1;bottom: 0.5rem; background-color: rgba(48, 161, 255, 0.85); color: white; padding: 3px 10px 3px 0px;
+    }
+
+    .Compartir-flag {
+        position: absolute;z-index: 1;bottom: 0.5rem; background-color: rgba(48, 161, 255, 0.85); color: white; padding: 3px 10px 3px 0px;
+    }
+
+    .Vacacionar-flag {
+        position: absolute;z-index: 1;bottom: 0.5rem; background-color: rgba(48, 161, 255, 0.85); color: white; padding: 3px 10px 3px 0px;
+    }
+
+    .Traspaso-flag {
+        position: absolute;z-index: 1;bottom: 0.5rem; background-color: rgba(48, 161, 255, 0.85); color: white; padding: 3px 10px 3px 0px;
+    }
+
+    .flag-5 {
+        position: absolute;z-index: 1;bottom: 0.5rem; background-color: rgba(48, 161, 255, 0.85); color: white; padding: 3px 10px 3px 0px;
+    }
+
+/* INICIO GALERIA DE IMAGENES */
+
+  .liquo-gallery {
+    margin: 0;
+    padding: 0;
+  }
+
+  .liquo-gallery li {
+    list-style-type: none;
+    display: inline-block;
+
+  }
+
+  .liquo-active { font-weight: bold; }
+
+
+    .div-images-zoom {
+    //position: relative;
+
+    //border: 1px solid #333;
+    //margin: 2%;
+    overflow: hidden;
+    padding: 0 0 ;
+    //width: 540px;
+  }
+  .div-images-zoom img {
+    max-width: 100%;
+    
+    -moz-transition: linear 0.3s;
+    -webkit-transition: linear 0.3s;
+    transition: linear 0.3s;
+    padding: 0 0;
+  }
+
+  .img-rule {
+    min-height: 192px;
+      object-fit: cover;
+  }
+
+/* FIN GALERIA DE IMAGENES */
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,62 @@
+/* ========== Top Navigation ========== */
+.top-nav {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    transition: 0.5s ease-in;
+	-webkit-transition: 0.5s ease-in;
+	-moz-transition: 0.5s ease-in;
+	background-color: rgba(0,0,0,0.4);
+}
+.top-nav .navbar-nav li .nav-link {
+    color: #fff;
+    font-size: 16px;
+    padding:29px 11px;
+    font-weight: 600;
+    transition: 0.5s ease-in;
+	-webkit-transition: 0.5s ease-in;
+	-moz-transition: 0.5s ease-in;
+	border-bottom: 3px solid transparent;
+}
+.top-nav li a.nav-link:hover, .top-nav .nav-item.active a.nav-link{
+    border-bottom: 3px solid var(--blue);
+    color: var(--blue);
+    transition: 0.5s ease-in;
+	-webkit-transition: 0.5s ease-in;
+	-moz-transition: 0.5s ease-in;
+}
+.top-nav .navbar-brand{
+	font-size: 28px;
+	color: #fff;
+	font-family: 'Montserrat', sans-serif;
+}
+.top-nav.light-header{
+	height: auto;
+	background: #fff;
+	box-shadow: 0 0 10px rgba(0,0,0,0.23);
+	transition: 0.5s ease-in;
+	-webkit-transition: 0.5s ease-in;
+	-moz-transition: 0.5s ease-in;
+}
+.top-nav.light-header .navbar-brand{
+	color: #212121;
+}
+.top-nav.light-header .navbar-nav li .nav-link {
+    color: #212121;
+    padding: 19px 11px;
+    transition: 0.5s ease-in;
+	-webkit-transition: 0.5s ease-in;
+	-moz-transition: 0.5s ease-in;
+}
+
+.top-nav.light-header li a.nav-link:hover, .top-nav.light-header .nav-item.active a.nav-link{
+	border-bottom: 3px solid var(--blue);
+    color: var(--blue);
+    transition: 0.5s ease-in;
+	-webkit-transition: 0.5s ease-in;
+	-moz-transition: 0.5s ease-in;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+
