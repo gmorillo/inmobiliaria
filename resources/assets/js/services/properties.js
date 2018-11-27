@@ -9,7 +9,6 @@ template.service('properties', ['$http', function ($http) {
     this.getDataDetail = (id) => $http.get(`/properties/get/detail/` + id);
     this.sendContacForm = (form) => $http.post(`/properties/form`, form);
     this.allpropertieslist = () => $http.get(`/properties/all-properties`);
-    //this.allpropertiesviews = () => $http.get(`/properties/all-properties-views`);
     this.filterInList = () => $http.get(`/properties/filter-in-list`);
     this.getDataFilter = () => $http.get(`/properties/data-filter`);
     this.filterCity = (id) => $http.get(`/properties/filter-city`);

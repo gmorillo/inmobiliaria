@@ -16,9 +16,14 @@
     
 
     <script src="{{asset('js/app.js')}}" ></script>
-
+    
     <script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
     <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src="{{ asset('/js/lozad.min.js') }}"></script>
+<script>
+    const observer = lozad();
+    observer.observe();
+</script>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
@@ -94,5 +99,6 @@
         <div class=" py-5">&nbsp;</div>
     </footer>
 </body>
+
 @yield('scripts')
 </html>

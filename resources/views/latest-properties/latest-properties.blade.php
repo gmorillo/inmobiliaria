@@ -15,13 +15,10 @@
 									<span ng-click="$latestproperties.negotiationList()">{%lp.negotiation.name%}</span>
 								</div>
 								<div class="carousel-item active">
-									<img class="d-block w-100 img-fluid img-rule" src="https://www.ebrosa.com/sites/default/files/styles/imagen_blog_full_480px/public/live-in-home-staging.jpg?itok=y4pM8NKX" alt="Second slide">
+									<img class="d-block w-100 img-fluid img-rule " ng-src="{%lp.photos[0].img%}" >
 								</div>
-								<div class="carousel-item">
-									<img class="d-block w-100 img-fluid img-rule" src="http://preview.uideck.com/items/brittville-demo/assets/img/property/house-1.jpg" alt="First slide">
-								</div>
-								<div class="carousel-item">
-									<img class="d-block w-100 img-fluid img-rule" src="https://www.modernhomesworldwide.com/p/w480/h320/aoe/zc/wp-content/uploads/2018/02/pga-catalunya-oak-villas-5.jpg" alt="Third slide">
+								<div class="carousel-item" ng-repeat="photos in lp.photos">
+									<img class="d-block w-100 img-fluid img-rule lozad"  ng-src="{%photos.img%}">
 								</div>
 							</a>
 						</div>

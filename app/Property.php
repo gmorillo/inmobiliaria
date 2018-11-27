@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Negotiation;
 use App\Housingtype;
 use App\Propertytype;
+use App\Property;
 use App\View;
 use App\User;
 use App\Division;
@@ -29,6 +30,8 @@ class Property extends Model
         'cp'=>'float',
         'number'=>'float'
     ];
+
+    protected $appends = ['photos'];
 
     public function negotiation()
     {
@@ -78,6 +81,11 @@ class Property extends Model
     public function photos()
     {
         return $this -> belongsTo(Photo::class);
+    }
+    
+    public function getPhotosAttribute()
+    {
+        return Photo::where('property_id', $this->id)->get(['img']);
     }
 
     /*public function getQuantityAttribute(){

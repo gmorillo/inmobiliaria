@@ -11,8 +11,7 @@ template.component('latestProperties', {
             
             let $latestproperties = this
             this.$onInit = function() {
-                properties.latest().then(( response ) => { $latestproperties.latestproperties = response.data });
-                
+                properties.latest().then(( response ) => { $latestproperties.latestproperties = response.data });                
             }
         }
     ]

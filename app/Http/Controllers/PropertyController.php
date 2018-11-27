@@ -72,12 +72,6 @@ class PropertyController extends Controller
         return Property::with(['negotiation','housingtype','user','propertytype', 'city', 'detail'])->where('city_id', 2)->get();
     }
 
-    /* public function allpropertiesviews() {
-
-        
-            return view('all-properties-list.main');
-    }*/ 
-
     public function contactForm(Request $request){
 
         $data = [];

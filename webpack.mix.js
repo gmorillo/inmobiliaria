@@ -70,5 +70,6 @@ mix.js(
 
 
 mix.js('resources/assets/js/bootstrap.js', 'public/js/bootstrap.js');
-mix.js('resources/assets/js/angular.js', 'public/js/angular.js')
-    .sass('resources/assets/sass/app.scss', 'public/css');
+mix.js('resources/assets/js/angular.js', 'public/js/angular.js');
+mix.sass('resources/assets/sass/app.scss', 'public/css');
+mix.copy('resources/assets/js/lozad.min.js','public/js/lozad.min.js');
