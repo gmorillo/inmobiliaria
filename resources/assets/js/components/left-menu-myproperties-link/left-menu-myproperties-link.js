@@ -20,7 +20,7 @@ template.component('leftMenuMyPropertiesLink', {
 						    <tr ng-repeat="row in $parent.$leftmenumypropertieslink.myPropertiesTable">
 						      	<td scope="row">
 						      		<li class="media">
-					      					<img class="mr-3 img-fluid mx-auto" width="120" src="http://preview.uideck.com/items/brittville-demo/assets/img/property/house-1.jpg" alt="Generic placeholder image">
+					      					<img class="mr-3 img-fluid mx-auto" width="120" ng-src="{%row.photos.img%}" alt="Generic placeholder image">
 					      				</a>
 						      		</li>
 						      	</td>

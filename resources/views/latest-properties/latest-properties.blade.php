@@ -6,7 +6,7 @@
 		<div class="col-xl-2 col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-4" ng-repeat="lp in $latestproperties.latestproperties">
 			<a href="">
 				<div class="card" >
-					<div class="img-quantity"><i class="far fa-images"></i> 5</div>
+					<!--<div class="img-quantity"><i class="far fa-images"></i> {%lp.photos.length%}</div>-->
 					<div id="{%lp.id%}" class="carousel slide" data-ride="carousel">
 						
 						<div class="carousel-inner">
@@ -15,21 +15,21 @@
 									<span ng-click="$latestproperties.negotiationList()">{%lp.negotiation.name%}</span>
 								</div>
 								<div class="carousel-item active">
-									<img class="d-block w-100 img-fluid img-rule " ng-src="{%lp.photos[0].img%}" >
+									<img class="d-block w-100 img-fluid img-rule " ng-src="{%lp.photos.img%}" >
 								</div>
-								<div class="carousel-item" ng-repeat="photos in lp.photos">
-									<img class="d-block w-100 img-fluid img-rule lozad"  ng-src="{%photos.img%}">
-								</div>
+								<!--<div class="carousel-item" ng-repeat="photos in lp.photos">
+									<img class="d-block w-100 img-fluid img-rule"  ng-src="{%photos.img%}">
+								</div>-->
 							</a>
 						</div>
-					  	<a class="carousel-control-prev" href="#{%lp.id%}" role="button" data-slide="prev">
+					  	<!--<a class="carousel-control-prev" href="#{%lp.id%}" role="button" data-slide="prev">
 					    	<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 					    	<span class="sr-only">Previous</span>
 					  	</a>
-					  	<a class="carousel-control-next" href="#{%lp.id%}" role="button" data-slide="next">
+					  	<a class="carousel-control-next" href="#{%lp.id%}" role="button" data-slide="next" ng-click="$latestproperties.loadOtherImages(lp.id)">
 					    	<span class="carousel-control-next-icon" aria-hidden="true"></span>
 					    	<span class="sr-only">Next</span>
-					  	</a>
+					  	</a>-->
 					</div>
 					
 					<div class="card-body">

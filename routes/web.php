@@ -38,6 +38,7 @@ Route::prefix('properties')->group(
         Route::get('/filter-in-list', 'PropertyController@filterInList');
         Route::get('/data-filter', 'PropertyController@getDataFilter');
         Route::get('/filter-city', 'PropertyController@getCityFilter');
+        //Route::get('/load-images', 'PropertyController@getOtherImages');
     }
 );
 

@@ -72,6 +72,12 @@ class PropertyController extends Controller
         return Property::with(['negotiation','housingtype','user','propertytype', 'city', 'detail'])->where('city_id', 2)->get();
     }
 
+    /*public function getOtherImages(){
+        $consulta = Photo::where('property_id', 26)->get();
+        print_r($consulta);
+        return $consulta;
+    }*/
+
     public function contactForm(Request $request){
 
         $data = [];

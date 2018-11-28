@@ -85,7 +85,7 @@ class Property extends Model
     
     public function getPhotosAttribute()
     {
-        return Photo::where('property_id', $this->id)->get(['img']);
+        return Photo::where('property_id', $this->id)->first(['img']);
     }
 
     /*public function getQuantityAttribute(){

@@ -4,7 +4,7 @@
 		<div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12 mb-4" ng-repeat="lp in $allpropertieslist.allpropertieslist">
 			<a href="">
 				<div class="card" >
-					<div class="img-quantity"><i class="far fa-images"></i> 5</div>
+					<div class="img-quantity"><i class="far fa-images"></i> {%lp.photos.length%}</div>
 					<div id="{%lp.id%}" class="carousel slide" data-ride="carousel">
 						<div class="carousel-inner">
 							<a href="/properties/detail/{%lp.id%}">
