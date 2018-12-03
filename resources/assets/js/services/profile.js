@@ -15,5 +15,6 @@ template.service('profile', ['$http', function ($http) {
     this.editProperty = ($id) => $http.post(`/profile/edit-property`, {propertyId:$id});
     this.updateProperty = (data) => $http.post(`/profile/update-property`,  data);
     this.editPropertyDetails = (data) => $http.post(`/profile/edit-detail`,  data);
+    this.deleteImage = ($id) => $http.post(`/profile/delete-images`, {imgId:$id});
+    this.addImages = (data) => $http.post(`/profile/add-images`, data);
 }]);
-

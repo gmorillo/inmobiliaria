@@ -132,6 +132,11 @@ class ProfileController extends Controller
         return $request;
     }
 
+    public function deletePhotos(Request $request){
+        $id = $request->input('imgId');
+        return Photo::where('id', $id)->delete();
+    }
+
     public function uploadLogo(Request $request)
     {
         if ($request->input('extension') === 'png') {
@@ -148,6 +153,7 @@ class ProfileController extends Controller
                 return response('no se ha podido guardar la imágen', 500);
             }
     }
+
 
 
 
@@ -196,6 +202,8 @@ class ProfileController extends Controller
         $selects['equipment'] = Equipments::get();
         $selects['divisions'] = Division::get();
         $selects['city'] = City::get();
+        $selects['photo'] = Photo::where('property_id', $request->input('propertyId'))->get();
+
         return $selects;         
     }
 

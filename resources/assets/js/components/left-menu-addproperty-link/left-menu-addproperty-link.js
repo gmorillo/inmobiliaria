@@ -190,11 +190,13 @@ template.component('leftMenuAddPropertyLink', {
                
             };
             this.uploadImg = function ( file ) {
+                console.log('entró en this.uploadImg: file: '+ file)
                 if (file){
                     this.upload(file, 'uploadLogo', 'jpg' );
                 }
             };
             this.deleteImg = function(item){
+                console.log(item)
                 var index = $leftmenuaddpropertylink.img_reparacion.indexOf(item);
                 console.log(index)
                 $leftmenuaddpropertylink.img_reparacion.splice(index, 1);    

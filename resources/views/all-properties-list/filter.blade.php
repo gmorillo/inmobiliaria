@@ -168,7 +168,7 @@
 				</div>
 			</div>
 		</div>
-		<button class=" btn btn-outline-primary btn-md w-100 ">Aplicar filtros</button>
+		<!--<button class=" btn btn-outline-primary btn-md w-100 ">Aplicar filtros</button>-->
 	</div>
 </div>
 <style>

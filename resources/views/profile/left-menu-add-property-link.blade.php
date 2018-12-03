@@ -239,7 +239,7 @@
 								<div class="form-group" >       
 									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top: 8px;">
 										<div class="row" st-safe-src="img">
-											<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3" ng-repeat="o in $leftmenuaddpropertylink.img_reparacion">
+											<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3" ng-repeat="o in $parent.$leftmenuaddpropertylink.img_reparacion">
 												<div class="thumbnails">
 													{%o.name%}
 														<img style="width: 100%; height: auto" class=" position-relative img-responsive center-block" ng-src="{% o.logotipo%}" title="img">

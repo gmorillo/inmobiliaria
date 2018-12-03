@@ -19,22 +19,23 @@
 					                <a href="{%photos.img%}" data-toggle="modal" data-target="#{%photos.id%}">
 					                    <img ng-src="{%photos.img%}" class="zoom img-fluid " style="object-fit: cover; ">
 					                </a>
-									<div class="modal fade" id="{%photos.id%}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-										<div class="modal-dialog modal-lg modal-dialog-centered" role="document" >
-											<div class="modal-content">
-												<div class="modal-header">
-													<h5 class="modal-title" id="exampleModalLongTitle">{%$index+1%}/{%$parent.$parent.$propertymain.data.photos.length%}</h5>
-													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-														<span aria-hidden="true">&times;</span>
-													</button>
-												</div>
-												<div class="modal-body">
-					                    			<img ng-src="{%photos.img%}" class=" img-fluid ">
+									<!-- MODAL IMAGES -->
+										<div class="modal fade" id="{%photos.id%}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+											<div class="modal-dialog modal-lg modal-dialog-centered" role="document" >
+												<div class="modal-content">
+													<div class="modal-header">
+														<h5 class="modal-title" id="exampleModalLongTitle">{%$index+1%}/{%$parent.$parent.$propertymain.data.photos.length%}</h5>
+														<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+															<span aria-hidden="true">&times;</span>
+														</button>
+													</div>
+													<div class="modal-body">
+						                    			<img ng-src="{%photos.img%}" class=" img-fluid ">
+													</div>
 												</div>
 											</div>
-											
 										</div>
-									</div>
+									<!-- FIN MODAL IMAGES -->
 					            </div>
 					       	</div>
 						</div>

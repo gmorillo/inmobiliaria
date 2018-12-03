@@ -77,28 +77,39 @@ template.component('leftMenuMyPropertiesLink', {
         function leftMenuMyPropertiesLinkF(profile, $uibModal, toastr) {
             
             let $leftmenumypropertieslink = this
-            
-            //$profileleftmenu.details = [];
+
             this.$onChanges = function(changesObj) {
-                //profile.getUserProfile(profile).then(( response ) => { $profileleftmenu.data = response.data });
-                if(angular.isDefined(changesObj.profileBunddle) && angular.isDefined(changesObj.profileBunddle.currentValue))
-                {
-                	//console.log(changesObj.profileBunddle)
-                    //profile.getAllProperties(profile).then(( response ) => { $leftmenumypropertieslink.data = response.data });
-                    
+                if(angular.isDefined(changesObj.profileBunddle) && angular.isDefined(changesObj.profileBunddle.currentValue)){}
+            }
+
+        	this.deleteProperty = function($event,row){
+            	$event.stopPropagation();
+                $event.preventDefault();
+                var conf = confirm("¿Desea eliminar esta propiedad de manera permanente?");
+                let index = $leftmenumypropertieslink.myPropertiesTable.indexOf(row);
+                if(conf == true){
+                	profile.deleteProperty(row.id).then( function(response)
+	                    {	
+	                        if(response.status === 200){
+	                        	$leftmenumypropertieslink.myPropertiesTable.splice(index, 1);
+	                            toastr.success('Propiedad eliminada correctamente');
+	                        }
+	                    },
+	                    function error(response){
+	                        toastr.error('No se ha podido eliminar la propiedad');
+	                    }
+	                );
+                }else{
+                	toastr.error('La propiedad no ha sido eliminada');
                 }
-            };
-
-
+            }
 
             this.editPropertyClick = function ($event, row){
             	this.selected = false;
             	$event.stopImmediatePropagation();
             	$event.preventDefault();
-            	//console.log(row)
             	let index = $leftmenumypropertieslink.myPropertiesTable.indexOf(row);
             	
-
                 profile.editProperty(row.id).then( 
                 	function(response){	
                         if(response.status === 200){
@@ -308,8 +319,6 @@ template.component('leftMenuMyPropertiesLink', {
 																</div>
 																<!-- END add  new checkboxes-->
 															</div>
-															
-
 															<div class="form-group dashborad-box">
 															<div class="mb-4 mt-4">
 																<h3 class="heading pb-4">Descripción de la propiedad</h3>
@@ -317,30 +326,64 @@ template.component('leftMenuMyPropertiesLink', {
 												                <!--<div class="float-right text-success"><small><span id="muestrocantidadcaracteresid">0</span> / 2000</small></div>-->
 															</div>
 															</div>
+															<div class="form-group dashborad-box" >    
+																<h3 class="heading mb-4">Imágenes actuales</h3>   
+																<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top: 8px;">
+																	<div class="row" st-safe-src="img">
+																		<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 m-0 p-1" ng-repeat="o in $resolve.property.photo">
+																			<div class="thumbnails">
+																				
+																					<img style="width: 100%; height: auto" class=" position-relative img-responsive center-block" ng-src="{%o.img%}" title="img">
+																				<div class="caption position-absolute" style="top:0;" >
+																					<p align="center">
+																						<a style="width: 100%;" href="#" class=" mt-0 btn btn-danger btn-sm" ng-click="$ctrl.deleteImg($index, o)" role="button"><small><i class="fa fa-trash" aria-hidden="true"> Borrar</i></small></a>
+																					</p>
+																				</div>  
+																			</div>
 
-															<div class="form-group">
-																<h3 class="heading mb-4 mt-5">Imágenes</h3>
-																<div class="form-group files my-5">
-													                <h5><strong>Sube las imágenes principales de tu propiedad</strong> </h5>
-													                <input  type="file" class="form-control" multiple="">
-												              	</div>
-															</div>
-
-															<div class="row">
-																<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-															      	<div class="form-group">
-															      		<h3 class="heading mb-4 mt-5">Imágenes Adicionales</h3>
-																		<select																      		 
-																	      	class="form-control"
-																			name="city"
-																			ng-options="option.name for option in $resolve.property.divisions track by option.id"
-																			ng-model="$resolve.property.property.divisions">
-																      	</select>
-																      	<input  type="text" hidden="hidden"  ng-model="$resolve.property.property.divisions.id" name="citySelected">			
+																		</div>
 																	</div>
-															    </div>
+																</div>
 															</div>
-															
+															<div class="form-group dashborad-box">
+																<h3 class="heading mb-4">Agregar imágenes de la propiedad</h3>      
+									                            <section>
+																	<div class="form-group" >      
+																		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
+																			<div class="row text-center">
+																				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 float-left p-5" style="padding: 15px; border: 1px solid #3490dc;">
+																					<label  class="btn btn-outline-primary btn-file w-50">
+																						<i class="fa fa-camera" aria-hidden="true"></i> Subir/Capturar imágenes 
+																						<input type="file" accept="image/*" capture="camera" id="camera"  class="form-control"  ngf-select ng-model="$ctrl.file" name="file" style="display: none;" ng-change="$ctrl.uploadImg($ctrl.file, $resolve.property.property.id)">
+																					</label>
+																					<small>{%$ctrl.file.name%}</small>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="form-group" >       
+																		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top: 8px;">
+																			<div class="row" st-safe-src="img">
+																				<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3" ng-repeat="o in $ctrl.property.img_reparacion">
+																					<div class="thumbnails">
+																						{%o.name%}
+																							<img style="width: 100%; height: auto" class=" position-relative img-responsive center-block" ng-src="{%o.logotipo%}" title="img">
+																						<div class="caption position-absolute" style="top:0;">
+																							<p align="center">
+																								<a style="width: 100%;" href="#" class=" mt-0 btn btn-danger btn-sm" ng-click="$ctrl.deleteNewImg(o)" id="{%$index%}" role="button"><small><i class="fa fa-trash" aria-hidden="true"> Borrar</i></small></a>
+																							</p>
+																						</div>  
+																					</div>
+
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</section>
+									                            <div ng-model="$leftmenumypropertieslink.file.name" ng-repeat="img in $leftmenumypropertieslink.file">
+									                            	<p>{%img.name%}</p>
+									                            </div>
+															</div>
 														</form>
 													</div>
 												</div>
@@ -352,32 +395,36 @@ template.component('leftMenuMyPropertiesLink', {
 										<button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="$ctrl.cancel($event)">Close</button>
 									</div>
 								`,
-			                    controller: ['$uibModalInstance', function EditModal($uibModalInstance){
+			                    controller: ['$uibModalInstance','Upload', 'profile', 'property',  function EditModal($uibModalInstance, Upload, profile, property)
+			                    {
+			                    	let i = 1;      // COUNTER, FOR CHECKBOX ID.
+			                    	let $ctrl = this;
+			                    	$ctrl.property = property;
 
-			                    	this.updatePropertyForm = function($event, id, form, detalles){
+			                    	this.updatePropertyForm = function($event, id, form, detalles ){
 			                    		$event.stopPropagation();
 						                $event.preventDefault();
 						                form.details = detalles;
-						                profile.updateProperty({id:id, form:form}).then( function(response)
-						                    {
-						                        if(response.status === 200){
-						                        	$uibModalInstance.dismiss('cancel');
-						                            toastr.success('Datos modificados con éxito');
-						                        }
-						                    },
-						                    function error(response){
-						                        toastr.error('No se han podido modificar los datos');
-						                    }
-						                );
 
+						                //$ctrl = this;
+						                //this.propiedad = property;
+						                profile.updateProperty({id:id, form:form}).then( function(response)
+					                    {
+					                        if(response.status === 200){
+					                        	$uibModalInstance.dismiss('cancel');
+					                            toastr.success('Datos modificados con éxito');
+					                        }
+					                    },
+					                    function error(response){
+					                        toastr.error('No se han podido modificar los datos');
+					                    });
 						                profile.editPropertyDetails({id:id, form:form})
 						            }
 
-						            let i = 1;      // COUNTER, FOR CHECKBOX ID.
-
 						            this.createChk = function (obj) {
 						                if (obj !== undefined) {
-						                    let chk = document.createElement('input');  // CREATE CHECK BOX.
+
+						                    let chk = document.createElement('input');  // CREATE CHECK BOX.						                                                                
 						                    chk.setAttribute('checked', 'checked'); 
 						                    chk.setAttribute('class', 'details'); 
 						                    chk.setAttribute('ng-model', 'newdetail.name'); 
@@ -390,22 +437,13 @@ template.component('leftMenuMyPropertiesLink', {
 						                    let lbl = document.createElement('label');  // CREATE LABEL.
 						                    lbl.setAttribute('class', 'btn btn-outline-success btn-sm active');
 						                    lbl.setAttribute('for', 'prodName' + i);
-
-
-						                    /*let tilde = document.createElement('span');  // CREATE LABEL.
-						                    tilde.setAttribute('class', 'fa fa-check');*/
-
-						                    // CREATE A TEXT NODE AND APPEND IT TO THE LABEL.
 						                    lbl.appendChild(document.createTextNode(obj));
 
 						                    // APPEND THE NEWLY CREATED CHECKBOX AND LABEL TO THE <p> ELEMENT.
 						                    container.appendChild(chk);
 						                    container.appendChild(lbl);
-						                    //container.appendChild(tilde);
 
 						                    obj = '';
-						                    //document.getElementById(obj.id).focus();
-
 						                    i = i + 1;
 						                }else{
 						                    toastr.error('No puede agregar un nuevo detalle en blanco');
@@ -417,16 +455,80 @@ template.component('leftMenuMyPropertiesLink', {
 								        $event.preventDefault();  
 								        $uibModalInstance.dismiss('cancel');
 								    }
+
+						            this.deleteImg = function($index, item){
+						            	profile.deleteImage(item.id).then( function(response)
+						                    {
+						                        if(response.status === 200){
+						                        	$ctrl.property.photo.splice($index, 1);
+						                            toastr.success('se eliminó imagen');
+						                        }
+						                    },
+						                    function error(response){
+						                        toastr.error('No se ha eliminado');
+						                    }
+						                ) 
+						            };
+						            this.deleteNewImg = function(item){
+						                var index = property.img_reparacion.indexOf(item);
+						                profile.deleteImage(item.id).then( function(response)
+						                    {
+						                        if(response.status === 200){
+						                        	property.img_reparacion.splice(index, 1);   
+						                            toastr.success('se eliminó imagen');
+						                        }
+						                    },
+						                    function error(response){
+						                        toastr.error('No se ha eliminado');
+						                    }
+						                ) 
+						                 
+						            };
+
+									/****** IMAGEN UPLOAD **********************************************************************************************/
+						            property.signature = {};
+						            property.img = [];
+						            property.guardar = false;
+						            this.upload = function (file, url, type, property_id ){
+						                Upload.upload({
+						                    url: url,
+						                    data: {
+						                        file: file,
+						                        property_id: property_id,
+						                        extension: angular.isDefined(file.name) ? file.name.split('.')[file.name.split('.').length - 1] : 'png'
+						                    } 
+						                }).then(function (resp) {
+						                    switch (type) {
+						                        case 'png':
+						                            property.signature.dataUrl = 'data:image/png;base64,' + resp.data;
+					                            break;
+						                        default:
+						                            property.logotipo = 'data:image/jpg;base64,' + resp.data;
+						                            //añado los datos al array newParteEncurso
+						                            property.img.push({logotipo:property.logotipo});
+						                            property.img_reparacion = property.img;
+					                            	break;
+						                    }
+						                }, function (error) {
+						                    toastr.info('El fichero debe ser tipo  ' + type);
+						                },function (evt) {
+						                    let progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+						                });
+						               
+						            };
+						            this.uploadImg = function ( file, property_id ) {
+						                if (file){
+						                    this.upload(file, 'add-images', 'jpg', property_id );
+						                }
+						            };
 			                    }],
 			                    controllerAs: '$ctrl',
 			                    size: 'lg',
 			                    appendTo: $(document).body,
 			                    resolve: {
-			                        property: () => $leftmenumypropertieslink.editPropertyModal
+			                        property: () => $leftmenumypropertieslink.editPropertyModal,
 			                    }
-			                }).result.then(function (data) {
-
-			                }, function () {})
+			                }).result.then(function (data) { }, function () {})
                         }
                     },
                     function error(response){
@@ -434,36 +536,6 @@ template.component('leftMenuMyPropertiesLink', {
                     },
                 );
             }
-
-            
-
-
-            
-
-            this.deleteProperty = function($event,row){
-            	$event.stopPropagation();
-                $event.preventDefault();
-                var conf = confirm("¿Desea eliminar esta propiedad de manera permanente?");
-                let index = $leftmenumypropertieslink.myPropertiesTable.indexOf(row);
-                if(conf == true){
-                	profile.deleteProperty(row.id).then( function(response)
-	                    {	
-	                        if(response.status === 200){
-	                        	$leftmenumypropertieslink.myPropertiesTable.splice(index, 1);
-	                            toastr.success('Propiedad eliminada correctamente');
-	                        }
-	                    },
-	                    function error(response){
-	                        toastr.error('No se ha podido eliminar la propiedad');
-	                    }
-	                );
-                }else{
-                	toastr.error('La propiedad no ha sido eliminada');
-                }
-            }
         }
     ]
 });
-
-
-

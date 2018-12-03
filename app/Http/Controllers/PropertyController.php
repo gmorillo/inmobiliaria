@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 use App\Mail\FormularioContacto;
 use App\Mail\acuseRecibo;
 use App\Property;
@@ -72,12 +73,6 @@ class PropertyController extends Controller
         return Property::with(['negotiation','housingtype','user','propertytype', 'city', 'detail'])->where('city_id', 2)->get();
     }
 
-    /*public function getOtherImages(){
-        $consulta = Photo::where('property_id', 26)->get();
-        print_r($consulta);
-        return $consulta;
-    }*/
-
     public function contactForm(Request $request){
 
         $data = [];
@@ -142,4 +137,51 @@ class PropertyController extends Controller
 
         return $data;
     }    
+
+    public function addImages(Request $request)
+    {
+
+        /*if ($request->input('extension') === 'png') {
+             return response('no se ha podido guardar la imágen', 500);
+        }*/
+        try {
+                if ($request->input('extension') === 'jpg') {
+                    $request->file->storeAs('logotipos', $request->input('id'), 'local'); 
+                    $base = 'data:image/jpg;base64,' ;       
+                }else if($request->input('extension') === 'png'){
+                    $request->file->storeAs('logotipos', $request->input('id'), 'local');
+                    $base = 'data:image/png;base64,';       
+                }
+                $files = base64_encode(Storage::disk('local')->get('logotipos/' . $request->input('id')));
+
+                //return $files;
+
+                $property_id = $request['property_id'];;
+                $divisionId = 2;
+                $photoBD = new Photo();
+                if($files != NULL){
+                    $photoBD->img = $base.$files;
+                    $photoBD->property_id = $property_id;
+                    $photoBD->division = $divisionId;
+                    $photoBD->save();
+                }
+                /*foreach($files as $imgs){
+                    //print_r($request->input('file')['$modelValue']);
+
+                    $photoBD = new Photo();
+                    if($imgs != NULL){
+                        $photoBD->img = $imgs;
+                        $photoBD->property_id = $property_id;
+                        $photoBD->division = $divisionId;
+                        $photoBD->save();
+                    }
+                }*/
+                //print_r($files->original);
+                return $files;
+            } catch (Exception $exception) {
+                return response('no se ha podido guardar la imágen', 500);
+            }
+    }
+
+
 }

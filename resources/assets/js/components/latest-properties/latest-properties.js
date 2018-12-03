@@ -13,21 +13,6 @@ template.component('latestProperties', {
             this.$onInit = function() {
                 properties.latest().then(( response ) => { $latestproperties.latestproperties = response.data });                
             }
-
-            /*this.loadOtherImages = function(id)
-            {
-                //properties.loadImgs().then(( response ) => { $latestproperties.otherImages = response.data });   
-                properties.loadImgs().then( function(response)
-                    {
-                        if(response.status === 200){
-                            toastr.success('trajo las imágenes');
-                        }
-                    },
-                    function error(response){
-                        toastr.error('No trajo nada');
-                    }
-                );
-            }*/
         }
     ]
 });

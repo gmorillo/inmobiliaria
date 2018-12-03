@@ -1,4 +1,4 @@
-<section>
+<!--<section>
 	<div class="container-fluid my-5">
 		<div class="pt-5">
 			<script type="text/javascript" src="{{ asset('js/form-search.js') }}"></script>
@@ -98,7 +98,7 @@
 			</div>
 		</div>
 	</div>
-</section>
+</section>-->
 
 @section('stylesheet')
 <link rel="stylesheet" href="{{ asset('css/form-search.css') }}">

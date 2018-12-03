@@ -6,7 +6,7 @@ template.component('allPropertiesListMain', {
         <div class="row">
             <div class="col-xl-3 col-lg-12 col-sm-12 col-xs-12">
                 <filter-in-list filtro="$allpropertieslistmain.filtrado(filtro, type)"></filter-in-list>
-                <filter-second></filter-second>
+                
             </div>
             <div class="col-xl-9 col-lg-12 col-sm-12 col-xs-12">
                 <all-properties-list alldata="$allpropertieslistmain.allpropertieslistmaindisplay"></all-properties-list>

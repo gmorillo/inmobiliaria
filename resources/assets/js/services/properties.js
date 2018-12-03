@@ -12,5 +12,5 @@ template.service('properties', ['$http', function ($http) {
     this.filterInList = () => $http.get(`/properties/filter-in-list`);
     this.getDataFilter = () => $http.get(`/properties/data-filter`);
     this.filterCity = (id) => $http.get(`/properties/filter-city`);
-    //this.loadImgs = (id) => $http.get(`/properties/load-images`);
+    
 }]);
